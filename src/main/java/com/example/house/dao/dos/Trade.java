@@ -59,8 +59,8 @@ public class Trade extends BaseEntity {
     private String creator;
 
     @TableField("version")
-    private long version;
+    private Integer version;
 
     @TableField("is_delete")
-    private long isDelete;
+    private Integer isDelete;
 }
