@@ -1,12 +1,14 @@
 package com.example.house.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.house.dao.dos.House;
 import com.example.house.dao.mapper.HouseMapper;
 import com.example.house.entity.req.HouseReq;
 import com.example.house.entity.resp.HouseResp;
+import com.example.house.service.HouseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
-public class HouseServiceImpl {
+public class HouseServiceImpl implements HouseService {
 
     @Autowired
     private HouseMapper mapper;
@@ -44,6 +46,15 @@ public class HouseServiceImpl {
     @Transactional
     public int update(HouseReq req) {
         return mapper.updateById(req2Entity(req));
+    }
+
+    @Override
+    public int audit(HouseReq req) {
+        LambdaUpdateWrapper<House> wrapper = new LambdaUpdateWrapper<>();
+        return mapper.update(req2Entity(req),wrapper
+                .eq(House::getType,req.getType())
+                .eq(House::getId,req.getId())
+        );
     }
 
     @Override
@@ -89,8 +100,35 @@ public class HouseServiceImpl {
         if (req.getService() != null) {
             wrapper.eq(House::getService, req.getService());
         }
+        if (req.getHouseSize() != null) {
+            wrapper.eq(House::getHouseSize, req.getHouseSize());
+        }
+        if (req.getPeopleNumber() != null) {
+            wrapper.eq(House::getPeopleNumber, req.getPeopleNumber());
+        }
+        if (req.getBedNumber() != null) {
+            wrapper.eq(House::getBedNumber, req.getBedNumber());
+        }
+        if (req.getToiletNumber() != null) {
+            wrapper.eq(House::getToiletNumber, req.getToiletNumber());
+        }
+        if (req.getHostId() != null) {
+            wrapper.eq(House::getHostId, req.getHostId());
+        }
+        if (req.getDescription() != null) {
+            wrapper.eq(House::getDescription, req.getDescription());
+        }
+        if (req.getBedroomNumber() != null) {
+            wrapper.eq(House::getBedroomNumber, req.getBedroomNumber());
+        }
+        if (req.getBedType() != null) {
+            wrapper.eq(House::getBedType, req.getBedType());
+        }
         if (req.getUpdateTime() != null) {
             wrapper.eq(House::getUpdateTime, req.getUpdateTime());
+        }
+        if (req.getCreateTime() != null) {
+            wrapper.eq(House::getCreateTime, req.getCreateTime());
         }
         if (StringUtils.isNotBlank(req.getCreator())) {
             wrapper.eq(House::getCreator, req.getCreator());
