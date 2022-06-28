@@ -80,32 +80,29 @@ public class HouseServiceImpl {
         if (Double.isNaN(req.getPrice())) {
             wrapper.eq(House::getPrice, req.getPrice());
         }
-        if (StringUtils.isNotBlank(req.getDescription())) {
-            wrapper.eq(House::getDescription, req.getDescription());
+        if (StringUtils.isNotBlank(req.getPhoto())) {
+            wrapper.eq(House::getPhoto, req.getPhoto());
         }
-        if (req.getSnapshotTime() != null) {
-            wrapper.eq(PatrolRecord::getSnapshotTime, req.getSnapshotTime());
+        if (req.getStatus() != null) {
+            wrapper.eq(House::getStatus, req.getStatus());
         }
-        if (req.getCreateTime() != null) {
-            wrapper.eq(PatrolRecord::getCreateTime, req.getCreateTime());
+        if (req.getService() != null) {
+            wrapper.eq(House::getService, req.getService());
         }
         if (req.getUpdateTime() != null) {
-            wrapper.eq(PatrolRecord::getUpdateTime, req.getUpdateTime());
+            wrapper.eq(House::getUpdateTime, req.getUpdateTime());
         }
         if (StringUtils.isNotBlank(req.getCreator())) {
-            wrapper.eq(PatrolRecord::getCreator, req.getCreator());
+            wrapper.eq(House::getCreator, req.getCreator());
         }
         if (StringUtils.isNotBlank(req.getUpdator())) {
-            wrapper.eq(PatrolRecord::getUpdator, req.getUpdator());
+            wrapper.eq(House::getUpdator, req.getUpdator());
         }
         if (req.getIsDelete() != null) {
-            wrapper.eq(PatrolRecord::getIsDelete, req.getIsDelete());
+            wrapper.eq(House::getIsDelete, req.getIsDelete());
         }
         if (req.getVersion() != null) {
-            wrapper.eq(PatrolRecord::getVersion, req.getVersion());
-        }
-        if (req.getUpdateTime() != null) {
-            wrapper.orderByDesc(PatrolRecord::getUpdateTime);
+            wrapper.eq(House::getVersion, req.getVersion());
         }
         wrapper.last(" order by update_time desc");
         return wrapper;

@@ -24,15 +24,15 @@ public class HouseResp implements Serializable {
     private double price;
     private String photo;
     private String status;
-    private long houseSize;
-    private long peopleNumber;
-    private long bedNumber;
-    private long toiletNumber;
+    private Integer houseSize;
+    private Integer peopleNumber;
+    private Integer bedNumber;
+    private Integer toiletNumber;
     private String service;
-    private long hostId;
-    private long auditId;
+    private Integer hostId;
+    private Integer auditId;
     private String description;
-    private long bedroomNumber;
+    private Integer bedroomNumber;
     private String bedType;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -42,6 +42,6 @@ public class HouseResp implements Serializable {
     private Date updateTime;
     private String updator;
     private String creator;
-    private long version;
-    private long isDelete;
+    private Integer version;
+    private Integer isDelete;
 }
