@@ -13,13 +13,17 @@ import com.example.house.entity.req.RuleReq;
 import com.example.house.entity.resp.HouseResp;
 import com.example.house.entity.resp.RuleResp;
 import com.example.house.service.RuleService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
+@Service
 public class RuleServiceImpl implements RuleService {
 
     @Autowired

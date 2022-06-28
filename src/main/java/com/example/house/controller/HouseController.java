@@ -20,11 +20,6 @@ public class HouseController {
     @Autowired
     HouseService service;
 
-    @PostMapping("/hello")
-    public String hello(){
-        return "hello";
-    }
-
     @PostMapping(value = "/query")
     @ApiOperation("查询房屋")
     public BaseResult<Page<HouseResp>> page(@RequestBody HouseReq housereq){

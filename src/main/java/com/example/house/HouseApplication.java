@@ -6,9 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-@MapperScan("com.example.house.dao.mapper")
-@ComponentScan(basePackages = "com.example.house.service")
-@SpringBootApplication(scanBasePackages = "com.example.house")
+@SpringBootApplication
 public class HouseApplication {
 
     public static void main(String[] args) {

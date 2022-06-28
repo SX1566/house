@@ -1,8 +1,6 @@
 package com.example.house.config;
 
-import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
@@ -14,10 +12,10 @@ import org.springframework.context.annotation.Configuration;
 @MapperScan("com.example.house.dao.mapper")
 public class MybatisPlusConfig {
 
-    /**
-     * 注册乐观锁与分页插件
-     * @return
-     */
+        /**
+         * 注册乐观锁与分页插件
+         * @return
+         */
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();

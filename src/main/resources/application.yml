@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    #配置连接信息
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/house
+    username: root
+    password: root
+#配置日志
+mybatis-plus:
+  typeAliasesPackage: com.example.house.dao.mapper
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
