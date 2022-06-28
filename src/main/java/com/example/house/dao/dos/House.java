@@ -20,22 +20,50 @@ public class House extends BaseEntity {
     
     @TableField("name")
     private String name;
-    
-    
+
+    @TableField("address")
     private String address;
+
+    @TableField("type")
     private String type;
+
+    @TableField("price")
     private double price;
+
+    @TableField("photo")
     private String photo;
+
+    @TableField("status")
     private String status;
+
+    @TableField("house_size")
     private long houseSize;
+
+    @TableField("people_number")
     private long peopleNumber;
+
+    @TableField("bed_number")
     private long bedNumber;
+
+    @TableField("toilet_number")
     private long toiletNumber;
+
+    @TableField("service")
     private String service;
+
+    @TableField("host_id")
     private long hostId;
+
+    @TableField("audit_id")
     private long auditId;
+
+    @TableField("description")
     private String description;
+
+    @TableField("bedroom_number")
     private long bedroomNumber;
+
+    @TableField("bed_type")
     private String bedType;
 
 
