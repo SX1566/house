@@ -1,36 +1,64 @@
 package com.example.house.controller;
 
-
-import io.swagger.annotations.ApiOperation;
-import org.springframework.stereotype.Controller;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.house.common.BaseResult;
+import com.example.house.entity.req.HouseReq;
+import com.example.house.entity.resp.HouseResp;
+import com.example.house.service.HouseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.List;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/house")
 public class HouseController {
 
-
-    @GetMapping(value = "/CarsTrainList")
-    @ApiOperation("车型库分页查询")
-    public BaseResult<Page<CarsTrainDTO>> pageQuery(@RequestBody CarsTrainQuery query){
-        return carsTrainServiceApi.pageQuery(query);
+    @Autowired
+    HouseService service;
+            
+    @PostMapping(value = "/query")
+    @ApiOperation("查询房屋")
+    public BaseResult<Page<HouseResp>> page(@RequestBody HouseReq housereq){
+        return BaseResult.ok(service.page(housereq));
     }
 
-    @GetMapping(value = "/CarsTrainCombox")
-    @ApiOperation("车型库下拉框")
-    public BaseResult<List<BrandSeriesModelComboBoxDTO>> carsTrainCombox(@RequestBody BrandSeriesModelComboBoxQuery query){
-        return carsTrainServiceApi.carsTrainCombox(query);
+    @PostMapping(value = "/add")
+    @ApiOperation("新增")
+    public BaseResult<Integer> add(@RequestBody @Validated HouseReq housereq){
+        return BaseResult.ok(service.add(housereq));
     }
 
-    @PostMapping(value = "/CarsTrainAddOrEdit")
-    @ApiOperation("车型库新增 or 修改")
-    public BaseResult<Boolean> updateOrCreateMotorcycleType(@RequestBody MotorcycleTypeParamQuery query){
-        query.setOperatorId(userDTO.getUserId());
-        query.setClientChannel(userDTO.getChannel());
-        query.setOperatorName(userDTO.getUserName());
-        return carsTrainServiceApi.updateOrCreateMotorcycleType(query);
+    @GetMapping(value = "/queryById")
+    @ApiOperation("按主键查询")
+    public BaseResult<HouseResp> queryById(@RequestParam Long id){
+        return BaseResult.ok(service.queryById(id));
+    }
+    
+    @DeleteMapping(value = "/deleteById")
+    @ApiOperation("按主键删除")
+    public BaseResult<Integer> deleteById(@RequestParam Long id){
+        return BaseResult.ok(service.deleteById(id));
+    }
+
+    @PostMapping(value = "/audit")
+    @ApiOperation("审核房屋")
+    public BaseResult<Integer> audit(@RequestBody @Validated HouseReq housereq){
+        return BaseResult.ok(service.audit(housereq));
+    }
+
+    @PostMapping(value = "/batchDelete")
+    @ApiOperation("批量删除")
+    public BaseResult<Integer> audit(@RequestBody @Validated List<Long> ids){
+        return BaseResult.ok(service.batchDelete(ids));
+    }
+
+    @PostMapping(value = "/update")
+    @ApiOperation("更新")
+    public BaseResult<Integer> update(@RequestBody @Validated HouseReq housereq){
+        return BaseResult.ok(service.update(housereq));
+
     }
 }
