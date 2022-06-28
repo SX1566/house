@@ -68,8 +68,8 @@ public class TradeResp implements Serializable {
     private String creator;
 
     @ApiModelProperty("版本号")
-    private long version;
+    private Integer version;
 
     @ApiModelProperty("逻辑删除状态 0未删除 1已删除")
-    private long isDelete;
+    private Integer isDelete;
 }

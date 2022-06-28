@@ -5,6 +5,7 @@ import com.example.house.entity.req.HouseReq;
 import com.example.house.entity.req.RuleReq;
 import com.example.house.entity.resp.HouseResp;
 import com.example.house.entity.resp.RuleResp;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
