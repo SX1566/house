@@ -2,7 +2,9 @@ package com.example.house.common;
 
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 public class BaseResult<T> implements Serializable {
     public static final int SUCCESS;
@@ -12,7 +14,7 @@ public class BaseResult<T> implements Serializable {
     private String message;
     private T data;
     private String[] errorArgs;
-    private Long currentTime;
+    private String currentTime;
     private String traceId;
 
     public static BaseResult ok() {
@@ -56,12 +58,13 @@ public class BaseResult<T> implements Serializable {
     }
 
     private static <T> BaseResult<T> restBaseResult(T data, int code, String message, String[] errors) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         BaseResult<T> apiBaseResult = new BaseResult();
         apiBaseResult.setCode(code);
         apiBaseResult.setData(data);
         apiBaseResult.setErrorArgs(errors);
         apiBaseResult.setMessage(message);
-        apiBaseResult.setCurrentTime(System.currentTimeMillis());
+        apiBaseResult.setCurrentTime(simpleDateFormat.format(new Date()));
         return apiBaseResult;
     }
 
@@ -88,7 +91,7 @@ public class BaseResult<T> implements Serializable {
         return this.errorArgs;
     }
 
-    public Long getCurrentTime() {
+    public String getCurrentTime() {
         return this.currentTime;
     }
 
@@ -112,7 +115,7 @@ public class BaseResult<T> implements Serializable {
         this.errorArgs = errorArgs;
     }
 
-    public void setCurrentTime(Long currentTime) {
+    public void setCurrentTime(String currentTime) {
         this.currentTime = currentTime;
     }
 

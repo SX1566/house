@@ -4,10 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.example.house.dao.dos.House;
-import com.example.house.dao.mapper.HouseMapper;
 import com.example.house.entity.req.HouseReq;
 import com.example.house.entity.resp.HouseResp;
+import com.example.house.mapper.HouseMapper;
+import com.example.house.pojo.House;
 import com.example.house.service.HouseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,7 +51,6 @@ public class HouseServiceImpl implements HouseService {
     public int audit(HouseReq req) {
         LambdaUpdateWrapper<House> wrapper = new LambdaUpdateWrapper<>();
         return mapper.update(req2Entity(req),wrapper
-                .eq(House::getType,req.getType())
                 .eq(House::getId,req.getId())
         );
     }

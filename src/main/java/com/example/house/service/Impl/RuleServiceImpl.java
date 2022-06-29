@@ -1,17 +1,12 @@
 package com.example.house.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.example.house.dao.dos.House;
-import com.example.house.dao.dos.Rule;
-import com.example.house.dao.mapper.HouseMapper;
-import com.example.house.dao.mapper.RuleMapper;
-import com.example.house.entity.req.HouseReq;
 import com.example.house.entity.req.RuleReq;
-import com.example.house.entity.resp.HouseResp;
 import com.example.house.entity.resp.RuleResp;
+import com.example.house.mapper.RuleMapper;
+import com.example.house.pojo.Rule;
 import com.example.house.service.RuleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -37,6 +32,12 @@ public class RuleServiceImpl implements RuleService {
         return new Page<RuleResp>(resp.getCurrent(), resp.getSize(), resp.getTotal()).setRecords(records);
     }
 
+    @Override
+    public List<RuleResp> listAll(RuleReq req) {
+        return mapper.selectList(req2QueryWrapper(req)).stream().map(this::entity2Resp)
+                .collect(Collectors.toList());
+    }
+    
 
     @Override
     @Transactional

@@ -24,6 +24,12 @@ public class RuleController {
         return BaseResult.ok(service.page(ruleReq));
     }
 
+    @ApiOperation("查询全部")
+    @PostMapping("/listAll")
+    public BaseResult<List<RuleResp>> listAll(@RequestBody RuleReq ruleReq) {
+        return BaseResult.ok(service.listAll(ruleReq));
+    }
+
     @PostMapping(value = "/add")
     @ApiOperation("新增")
     public BaseResult<Integer> add(@RequestBody @Validated RuleReq ruleReq){

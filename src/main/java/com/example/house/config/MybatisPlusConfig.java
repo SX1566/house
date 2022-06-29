@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-@MapperScan("com.example.house.dao.mapper")
 public class MybatisPlusConfig {
 
         /**

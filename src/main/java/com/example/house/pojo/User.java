@@ -1,4 +1,4 @@
-package com.example.house.dao.dos;
+package com.example.house.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -7,7 +7,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.example.house.config.BaseEntity;
 import lombok.Data;
 
-import java.util.Date;
 /**
  * 用户表
  *
@@ -17,7 +16,7 @@ import java.util.Date;
 public class User extends BaseEntity {
 
     @TableId(value = "id",type = IdType.ASSIGN_ID)
-    private long id;
+    private Long id;
 
     @TableField("user")
     private String user;

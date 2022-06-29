@@ -1,4 +1,4 @@
-package com.example.house.dao.dos;
+package com.example.house.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -7,39 +7,44 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.example.house.config.BaseEntity;
 import lombok.Data;
 
-/**
- * 规则表
- * 
- * */
-
 import java.util.Date;
+/**
+ * 交易表
+ *
+ * */
 @Data
-@TableName("rule")
-public class Rule extends BaseEntity {
+@TableName("trade")
+public class Trade extends BaseEntity {
 
     @TableId(value = "id",type = IdType.ASSIGN_ID)
-    private long id;
+    private Long id;
 
-    @TableField("type")
-    private String type;
+    @TableField("client_id")
+    private long clientId;
 
-    @TableField("min_time")
-    private String minTime;
+    @TableField("host_id")
+    private long hostId;
 
-    @TableField("max_time")
-    private String maxTime;
+    @TableField("house_id")
+    private long houseId;
 
-    @TableField("refund_date")
-    private Date refundDate;
+    @TableField("trade_time")
+    private Date tradeTime;
+
+    @TableField("price")
+    private long price;
+
+    @TableField("check_in_time")
+    private Date checkInTime;
+
+    @TableField("check_out_time")
+    private Date checkOutTime;
+
+    @TableField("status")
+    private String status;
 
     @TableField("description")
     private String description;
-
-    @TableField("have_invoice")
-    private String haveInvoice;
-
-    @TableField("payment")
-    private String payment;
 
     @TableField("create_time")
     private Date createTime;

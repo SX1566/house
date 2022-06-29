@@ -6,7 +6,6 @@ import com.example.house.entity.req.HouseReq;
 import com.example.house.entity.resp.HouseResp;
 import com.example.house.service.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
